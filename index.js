@@ -6,7 +6,7 @@ console.log("it works you retard!")
 http.createServer(function (req, res) {
   handler(req, res, function (err) {
     res.statusCode = 404
-    res.end('no such location')
+    res.end(req.url)
   })
 }).listen(7777)
  
