@@ -1,0 +1,22 @@
+{
+  "name": "githubwebhooks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vives-projectwerk-2021/GithubWebhooks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vives-projectwerk-2021/GithubWebhooks/issues"
+  },
+  "homepage": "https://github.com/vives-projectwerk-2021/GithubWebhooks#readme",
+  "dependencies": {
+    "github-webhook-handler": "^1.0.0"
+  }
+}
