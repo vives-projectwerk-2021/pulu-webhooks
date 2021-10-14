@@ -2,6 +2,7 @@ var http = require('http')
 var createHandler = require('github-webhook-handler')
 var handler = createHandler({ path: '/webhook', secret: 'pulu' })
  
+console.log("it works you retard!")
 http.createServer(function (req, res) {
   handler(req, res, function (err) {
     res.statusCode = 404
@@ -18,7 +19,7 @@ handler.on('push', function (event) {
     event.payload.repository.name,
     event.payload.ref)
 })
- 
+
 handler.on('issues', function (event) {
   console.log('Received an issue event for %s action=%s: #%d %s',
     event.payload.repository.name,
