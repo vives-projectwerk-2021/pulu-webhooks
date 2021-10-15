@@ -2,7 +2,7 @@ var http = require('http')
 var createHandler = require('github-webhook-handler')
 var handler = createHandler({ path: '/', secret: 'pulu' })
  
-console.log("it works you retard!")
+console.log("I think it works!")
 http.createServer(function (req, res) {
   handler(req, res, function (err) {
     res.statusCode = 404
