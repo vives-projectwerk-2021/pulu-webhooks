@@ -27,3 +27,9 @@ handler.on('issues', function (event) {
     event.payload.issue.number,
     event.payload.issue.title)
 })
+
+handler.on('package', function (event) {
+  console.log('Received a package event for %s to %s',
+    event.payload,
+    )
+})
