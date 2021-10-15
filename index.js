@@ -29,7 +29,5 @@ handler.on('issues', function (event) {
 })
 
 handler.on('package', function (event) {
-  console.log('Received a package event for %s to %s',
-    event.payload,
-    )
+  console.log(event.payload)
 })
