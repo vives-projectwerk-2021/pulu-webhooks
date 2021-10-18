@@ -3,6 +3,9 @@ var createHandler = require('github-webhook-handler')
 var handler = createHandler({ path: '/', secret: 'pulu' })
  
 console.log("I think it works!")
+
+
+
 http.createServer(function (req, res) {
   handler(req, res, function (err) {
     res.statusCode = 404
@@ -30,4 +33,22 @@ handler.on('issues', function (event) {
 
 handler.on('package', function (event) {
   console.log(event.payload)
+  consoleWrite("Docker-compose pull");
+  consoleWrite("docker-compose up -d");
+  
 })
+
+function consoleWrite(command){
+  const { exec } = require("child_process");
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+}
