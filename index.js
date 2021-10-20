@@ -10,11 +10,13 @@ http.createServer(function (req, res) {
   handler(req, res, function (err) {
     res.statusCode = 404
     res.end(req.url)
+    
   })
 }).listen(7777)
  
 handler.on('error', function (err) {
   console.error('Error:', err.message)
+  
 })
  
 handler.on('push', function (event) {
@@ -32,9 +34,14 @@ handler.on('issues', function (event) {
 })
 
 handler.on('package', function (event) {
-  console.log(event.payload)
-  consoleWrite("Docker-compose pull");
-  consoleWrite("docker-compose up -d");
+  console.log("branch: " + event.payload.repository.default_branch)
+  if(event.payload.repository.default_branch == 'dev'){
+    console.log("install command: " + event.payload.package.package_version.installation_command)
+    consoleWrite(event.payload.package.package_version.installation_command);
+    consoleWrite("docker-compose up -d");
+    console.log()
+  }
+  
   
 })
 
