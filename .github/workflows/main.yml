@@ -36,6 +36,6 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: echo ${PACKAGE_NAME}
+          tags: run: echo ${PACKAGE_NAME}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
