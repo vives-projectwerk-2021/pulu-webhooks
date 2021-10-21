@@ -17,7 +17,7 @@ jobs:
       - name: Test
         run: echo "${BRANCH_NAME}"
       - name: package name
-        run: echo "ghcr.io/vives-projectwerk-2021/webhooks-test${BRANCH_NAME}:latest"
+        run: echo "::set-env name=PACKAGE_NAME::ghcr.io/vives-projectwerk-2021/webhooks-test${BRANCH_NAME}:latest"
 
       - name: Set up Docker Buildx
         id: buildx
@@ -36,7 +36,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: "ghcr.io/vives-projectwerk-2021/webhooks-test${BRANCH_NAME}:latest"
+          tags: ${PACKAGE_NAME}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
