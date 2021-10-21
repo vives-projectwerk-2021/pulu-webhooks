@@ -16,6 +16,8 @@ jobs:
         run: echo "::set-env name=BRANCH_NAME::$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')"
       - name: Test
         run: echo "${BRANCH_NAME}"
+      - name: package name
+        run: echo "ghcr.io/vives-projectwerk-2021/webhooks-test${BRANCH_NAME}:latest"
 
       - name: Set up Docker Buildx
         id: buildx
