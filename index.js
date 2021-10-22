@@ -43,9 +43,8 @@ handler.on('package', function (event) {
     //consoleWrite(event.payload.package.package_version.installation_command);
     consoleWrite("docker-compose --version");
     consoleWrite("docker --version");
-    consoleWrite(event.payload.package.package_version.installation_command);
+    consoleWrite(`${event.payload.package.package_version.installation_command} && sh update.sh`);
     // consoleWrite("docker-compose up -d");
-    consoleWrite("sh update.sh")
     console.log()
   //}
   
