@@ -2,7 +2,7 @@ var http = require('http')
 var createHandler = require('github-webhook-handler')
 var handler = createHandler({ path: '/', secret: 'pulu' })
  
-console.log("I think it works!")
+console.log("I think it works, jens is gay!")
     consoleWrite("docker-compose --version");
     consoleWrite("docker --version");
 
@@ -43,7 +43,7 @@ handler.on('package', function (event) {
     //consoleWrite(event.payload.package.package_version.installation_command);
     consoleWrite("docker-compose --version");
     consoleWrite("docker --version");
-    consoleWrite(`${event.payload.package.package_version.installation_command} && sh update.sh`);
+    consoleWrite(`${event.payload.package.package_version.installation_command} `);
     // consoleWrite("docker-compose up -d");
     console.log()
   //}
