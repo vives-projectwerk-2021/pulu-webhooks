@@ -3,7 +3,10 @@ var createHandler = require('github-webhook-handler')
 var handler = createHandler({ path: '/', secret: 'pulu' })
  
 console.log("I think it works!")
-
+    consoleWrite("docker-compose --version");
+    consoleWrite("docker --version");
+    consoleWrite("docker-compose pull");
+    consoleWrite("docker-compose up -d");
 
 
 http.createServer(function (req, res) {
@@ -35,10 +38,12 @@ handler.on('issues', function (event) {
 
 handler.on('package', function (event) {
   console.log("branch: " + event.payload.package.package_version.target_commitish)
-  console.log("install command: " + event.payload.package.package_version.installation_command)
+
   //if(event.payload.package_version.target_commitish == 'dev'){
     console.log("install command: " + event.payload.package.package_version.installation_command)
     //consoleWrite(event.payload.package.package_version.installation_command);
+    consoleWrite("docker-compose --version");
+    consoleWrite("docker --version");
     consoleWrite("docker-compose pull");
     consoleWrite("docker-compose up -d");
     console.log()
@@ -49,7 +54,7 @@ handler.on('package', function (event) {
 
 function consoleWrite(command){
   const { exec } = require("child_process");
-  exec(`-c ${command}`, {shell: '/bin/bash'}, (error, stdout, stderr) => {
+  exec(command, (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
