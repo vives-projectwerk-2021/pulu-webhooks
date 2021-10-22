@@ -34,14 +34,15 @@ handler.on('issues', function (event) {
 })
 
 handler.on('package', function (event) {
-  console.log("branch: " + event.payload.repository.default_branch)
+  console.log("branch: " + event.payload.package.package_version.target_commitish)
   console.log("install command: " + event.payload.package.package_version.installation_command)
-  if(event.payload.package_version.target_commitish == 'dev'){
+  //if(event.payload.package_version.target_commitish == 'dev'){
     console.log("install command: " + event.payload.package.package_version.installation_command)
-    consoleWrite(event.payload.package.package_version.installation_command);
+    //consoleWrite(event.payload.package.package_version.installation_command);
+    consoleWrite("docker-compose pull");
     consoleWrite("docker-compose up -d");
     console.log()
-  }
+  //}
   
   
 })
