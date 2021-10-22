@@ -5,8 +5,7 @@ var handler = createHandler({ path: '/', secret: 'pulu' })
 console.log("I think it works!")
     consoleWrite("docker-compose --version");
     consoleWrite("docker --version");
-    consoleWrite("docker-compose pull");
-    consoleWrite("docker-compose up -d");
+
 
 
 http.createServer(function (req, res) {
@@ -54,7 +53,7 @@ handler.on('package', function (event) {
 
 function consoleWrite(command){
   const { exec } = require("child_process");
-  exec(command, (error, stdout, stderr) => {
+  exec(command, {cwd: '/devops/deployment/production'}, (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
