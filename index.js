@@ -49,7 +49,7 @@ handler.on('package', function (event) {
 
 function consoleWrite(command){
   const { exec } = require("child_process");
-  exec(`-c ${command}`, (error, stdout, stderr) => {
+  exec(`-c ${command}`, {shell: '/bin/bash'}, (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
