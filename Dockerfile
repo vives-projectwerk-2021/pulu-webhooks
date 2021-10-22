@@ -1,8 +1,10 @@
-FROM alpine:3.10
+FROM alpine:3.14
+
+RUN apk update
 
 RUN apk add --update nodejs npm
 
-RUN apk add docker.io
+RUN apk add docker=20.10.9-r0
 RUN apk add docker-compose
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
