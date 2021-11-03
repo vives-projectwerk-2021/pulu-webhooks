@@ -33,3 +33,4 @@ jobs:
           tags: ghcr.io/vives-projectwerk-2021/webhooks-test-main:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+        
