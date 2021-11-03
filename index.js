@@ -43,9 +43,8 @@ handler.on('package', function (event) {
     //consoleWrite(event.payload.package.package_version.installation_command);
     consoleWrite("docker-compose --version");
     consoleWrite("docker --version");
-    consoleWrite(`${event.payload.package.package_version.installation_command} `);
+    consoleWrite("docker-compose pull");
     // consoleWrite("docker-compose up -d");
-    console.log()
   //}
   
   
