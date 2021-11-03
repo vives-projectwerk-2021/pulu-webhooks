@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     name: github-webhook
     on:
-    push:
-      branches:
-        - dev
+      push:
+        branches:
+          - dev
     steps:
     
       - name: Check Out Repo 
