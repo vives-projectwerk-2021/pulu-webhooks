@@ -30,6 +30,6 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/vives-projectwerk-2021/webhooks-test-dev:latest
+          tags: ghcr.io/vives-projectwerk-2021/webhooks-test:dev
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
