@@ -2,15 +2,15 @@ var http = require('http')
 var createHandler = require('github-webhook-handler')
 var handler = createHandler({ path: '/', secret: 'pulu' })
  
-console.log("I think it works, jens is gay!")
-    consoleWrite("docker-compose --version");
-    consoleWrite("docker --version");
+consoleWrite("docker-compose --version");
+consoleWrite("docker --version");
 
 
 
 http.createServer(function (req, res) {
   handler(req, res, function (err) {
-    res.statusCode = 404
+    res.statusCode = 200
+    console.log('webhook')
     res.end(req.url)
     
   })
@@ -52,7 +52,7 @@ handler.on('package', function (event) {
 
 function consoleWrite(command){
   const { exec } = require("child_process");
-  exec(command, {cwd: '/devops/deployment/production'}, (error, stdout, stderr) => {
+  exec(command, {cwd: '/devops/deployment'}, (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
