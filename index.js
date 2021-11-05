@@ -16,6 +16,10 @@ http.createServer(function (req, res) {
   })
 }).listen(7777)
  
+handler.on('*', (event) => {
+  console.log(`event: ${event}`)
+})
+
 handler.on('error', function (err) {
   console.error('Error:', err.message)
   
