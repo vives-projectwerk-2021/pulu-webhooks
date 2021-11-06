@@ -17,7 +17,7 @@ http.createServer(function (req, res) {
 }).listen(7777)
  
 handler.on('*', (event) => {
-  console.log(`event: ${event}`)
+  console.log(`event: ${event.event}`)
 })
 
 handler.on('error', function (err) {
@@ -42,13 +42,19 @@ handler.on('issues', function (event) {
 handler.on('package', function (event) {
   console.log("branch: " + event.payload.package.package_version.target_commitish)
 
+  console.log(event)
+
+  if (false) {
+    consoleWrite("make production-update production")
+  }
+
   //if(event.payload.package_version.target_commitish == 'dev'){
-    console.log("install command: " + event.payload.package.package_version.installation_command)
+    // console.log("install command: " + event.payload.package.package_version.installation_command)
     //consoleWrite(event.payload.package.package_version.installation_command);
-    consoleWrite("docker-compose --version");
-    consoleWrite("docker --version");
-    consoleWrite("docker-compose pull");
-    consoleWrite("docker-compose up -d");
+    // consoleWrite("docker-compose --version");
+    // consoleWrite("docker --version");
+    // consoleWrite("docker-compose pull");
+    // consoleWrite("docker-compose up -d");
   //}
   
   
