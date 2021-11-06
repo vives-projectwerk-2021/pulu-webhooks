@@ -43,9 +43,10 @@ handler.on('package', function (event) {
   console.log("branch: " + event.payload.package.package_version.target_commitish)
 
   const mode = event.host.split('.pulu.devbitapp.be')[0]
+  const branch = event.payload.package.package_version.target_commitish
 
-  if (mode == "production") consoleWrite("make production-update production")
-  else if (mode == "staging") consoleWrite("make staging-update staging")
+  if (mode == "production" && branch == 'main') consoleWrite("make production-update production")
+  else if (mode == "staging" && branch != 'main') consoleWrite("make staging-update staging")
 
   //if(event.payload.package_version.target_commitish == 'dev'){
     // console.log("install command: " + event.payload.package.package_version.installation_command)
