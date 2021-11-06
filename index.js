@@ -39,9 +39,15 @@ handler.on('issues', function (event) {
     event.payload.issue.title)
 })
 
+handler.on('registry_package', (event) => {
+  console.log(event.payload)
+})
+
 handler.on('package', function (event) {
   const mode = event.host.split('.pulu.devbitapp.be')[0]
   const tag = event.payload.package.package_version.tag_name
+
+  console.log(event.payload.package.package_version)
 
   console.log(`mode: ${mode}, tag: ${tag}`)
 
