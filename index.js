@@ -40,24 +40,13 @@ handler.on('issues', function (event) {
 })
 
 handler.on('package', function (event) {
-  console.log("branch: " + event.payload.package.package_version.target_commitish)
-
   const mode = event.host.split('.pulu.devbitapp.be')[0]
   const branch = event.payload.package.package_version.target_commitish
 
+  console.log(`mode: ${mode}, branch: ${branch}`)
+
   if (mode == "production" && branch == 'main') consoleWrite("make production-update production")
   else if (mode == "staging" && branch != 'main') consoleWrite("make staging-update staging")
-
-  //if(event.payload.package_version.target_commitish == 'dev'){
-    // console.log("install command: " + event.payload.package.package_version.installation_command)
-    //consoleWrite(event.payload.package.package_version.installation_command);
-    // consoleWrite("docker-compose --version");
-    // consoleWrite("docker --version");
-    // consoleWrite("docker-compose pull");
-    // consoleWrite("docker-compose up -d");
-  //}
-  
-  
 })
 
 function consoleWrite(command){
