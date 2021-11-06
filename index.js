@@ -41,12 +41,12 @@ handler.on('issues', function (event) {
 
 handler.on('package', function (event) {
   const mode = event.host.split('.pulu.devbitapp.be')[0]
-  const branch = event.payload.package.package_version.target_commitish
+  const tag = event.payload.package.package_version.tag_name
 
-  console.log(`mode: ${mode}, branch: ${branch}`)
+  console.log(`mode: ${mode}, tag: ${tag}`)
 
-  if (mode == "production" && branch == 'main') consoleWrite("make production-update production")
-  else if (mode == "staging" && branch != 'main') consoleWrite("make staging-update staging")
+  if (mode == "production" && tag == 'latest') consoleWrite("make production-update production")
+  else if (mode == "staging" && tag != 'latest') consoleWrite("make staging-update staging")
 })
 
 function consoleWrite(command){
