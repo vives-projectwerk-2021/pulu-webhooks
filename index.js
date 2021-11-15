@@ -1,11 +1,6 @@
 var http = require('http')
 var createHandler = require('github-webhook-handler')
 var handler = createHandler({ path: '/', secret: 'pulu' })
- 
-consoleWrite("docker-compose --version");
-consoleWrite("docker --version");
-
-
 
 http.createServer(function (req, res) {
   handler(req, res, function (err) {
@@ -25,20 +20,6 @@ handler.on('error', function (err) {
   
 })
  
-handler.on('push', function (event) {
-  console.log('Received a push event for %s to %s',
-    event.payload.repository.name,
-    event.payload.ref)
-})
-
-handler.on('issues', function (event) {
-  console.log('Received an issue event for %s action=%s: #%d %s',
-    event.payload.repository.name,
-    event.payload.action,
-    event.payload.issue.number,
-    event.payload.issue.title)
-})
-
 handler.on('registry_package', (event) => {
   const mode = event.host.split('.pulu.devbitapp.be')[0]
   const tag = event.payload.registry_package.package_version.container_metadata.tag.name
@@ -47,7 +28,6 @@ handler.on('registry_package', (event) => {
   console.log(`mode: ${mode}, tag: ${tag}`)
 
   if (mode == "production" && tag == 'latest') consoleWrite("make production-update production")
-  else if (mode == "staging" && tag != 'latest') consoleWrite("make staging-update staging")
 })
 
 function consoleWrite(command){
